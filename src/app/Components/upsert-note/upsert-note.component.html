@@ -1,0 +1,14 @@
+<div class="container"  style="margin-left:10px;">
+  <div class="row align-items-start">
+      <input type="text" id="noteTitlearea" style="margin-bottom:10px;margin-top:10px;" [(ngModel)]="noteToBeUpserted.title" [value]="noteToBeUpserted.title">
+      <textarea type="text" id="noteTextarea" rows="20" cols="50" [(ngModel)]="noteToBeUpserted.text">{{noteToBeUpserted.text}}</textarea>
+  </div>
+  <div class="row align-items-end">
+    <button type="button" #saveTheNote class="btn btn-primary" style="width: 100px; height: 50px; border-radius: 0%; padding: 0; margin-top:10px;" 
+    (click)="saveNote()" >
+    Save</button>
+    <button type="button" #backHome class="btn btn-primary" style="width: 100px; height: 50px; border-radius: 0%; padding: 0; margin-top:10px; margin-left: 10px;" 
+    (click)="backToHome()">
+    Back </button>
+  </div>
+</div>

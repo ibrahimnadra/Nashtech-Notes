@@ -1,0 +1,24 @@
+<div>
+    <h1>Nashtech Notes</h1>
+</div>
+<div *ngIf="noteHomePage == true" style="margin-left:10px;" >
+    <div *ngFor="let note of notesInLocalStorage">
+        <app-view-note [note] = "note" 
+        (noteSelectToDelete)="enableDelete($event)" 
+        (disableDelete) = "disableDeleteButton()"
+        (noteSelectToUpdate)="updateNote($event)">
+        </app-view-note>
+    </div>
+    <div style="bottom: 5px;position: fixed;">
+        <button type="button"  #addTheNote class="btn btn-primary" style="width: 100px; height: 50px; border-radius: 0%; padding: 0; margin-top:10px;"
+        (click)= "insertNote()">Add</button>
+        <button type="button" #deleteTheNotes class="btn btn-primary" style="width: 100px; height: 50px; border-radius: 0%; padding: 0; margin-top:10px; margin-left: 10px;" 
+        [disabled]="isButtonDisabled" 
+        (click)= "deleteNotes()">Delete</button>
+    </div>
+</div>
+<app-upsert-note *ngIf="noteHomePage == false"  style="margin-left:10px;" 
+[noteToBeUpserted] = "noteToBeUpserted" 
+(noteSave)="saveNoteToLocal($event)"
+(backHome) ="onHomePage()">
+</app-upsert-note>
