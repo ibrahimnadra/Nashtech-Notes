@@ -1,59 +1,55 @@
 # NashtechNotes
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.4.
+This project is a single page application, generated using Angular CLI. 
+There are multiple components on the page, which will make it look like different pages. 
+Through this we can add notes and save them to the local storage of the browser. 
+Also we can edit the existing notes, by clicking on them and can save the updated note to the local storage. 
+By checking the checkbox aligned with the notes on the home page, we can select them to be deleted, this will enable the delete button, otherwise the delete button will be disabled. 
+And on clicking the delete button, all the checked notes are deleted.
 
-## Development server
+## Components
 
-To start a local development server, run:
+### AppComponent
+This is the root component of the application, having two child components: 
+ViewNoteComponent, UpsertNoteComponent
 
-```bash
-ng serve
-```
+- if the noteHomePage variable is set to true, it will hide the UpsertNoteComponent component and display the div component which has the necessary components related to the note home page, else it will display that and hide the div component.
+The UpsertNoteComponent expects the input data noteToBeUpserted from the AppComponent.
+and the AppComponent listens to two events from the UpsertNoteComponent: 
+  - noteSave and then calls the saveNoteToLocal method with output noteToBeSaved data recieved from the event.
+  - backHome and then calls the onHomePage method.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+- Under the div element:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+   - there is a div element with ngFor directive, which iterates through the notes stored in the local storage, and displays the ViewNoteComponent for each note.  
+   The ViewNoteComponent expects the input data note from the AppComponent.
+   and the AppComponent listens to three events from the ViewNoteComponent: 
+    - noteSelectToDelete and then calls the enableDelete method with output note data recieved from the event.
+    - noteSelectToUpdate and then calls the updateNote method with output note data recieved from the event.
+    - disableDelete and then calls the disableDeleteButton method.
 
-```bash
-ng generate component component-name
-```
+   - there is a div element, under which there are two buttons:
+     - #addTheNote : listens to click event and then calls the insertNote method. 
+     - #deleteTheNotes : listens to click event and then calls the deleteNotes method.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### UpsertNoteComponent
+This component is displayed when the noteHomePage variable is false.
 
-```bash
-ng generate --help
-```
+- Under the first div element of the div container element, there are two elements:
+  - #noteTitlearea : it's an input element, which by default shows the title of the noteToBeUpserted recieved from the AppComponent.
+  - #noteTextarea : it's an textarea element, which by default shows the text of the noteToBeUpserted recieved from the AppComponent.
 
-## Building
+- Under the second div element of the div container element, there are two buttons:
+     - #saveTheNote : listens to click event and then calls the saveNote method.
+     - #backHome : listens to click event and then calls the backToHome method.
 
-To build the project run:
+### ViewNoteComponent
+This component is displayed for each note stored in the local storage. 
 
-```bash
-ng build
-```
+- Under the div element, there are three elements:
+  - #checkTheNote: listens to change event and then calls the selectNoteToDelete method.
+  - #noteTitleLink: listens to click event and then calls the selectNoteToUpdate method and displays the title of the note recieved from the AppComponent.
+  - #noteText: displays the text of the note recieved from the AppComponent.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

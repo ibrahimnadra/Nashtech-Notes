@@ -1,7 +1,7 @@
 
 <div class="navbar-brand navbar-light bg-light" style="margin-bottom:20px;">
     <input type="checkbox" #checkTheNote (change)="selectNoteToDelete(note)" [(ngModel)]="isChecked" [checked]="isChecked">
-    <a #titleLink style="font-size: 25px; margin-left:10px;" (click)="selectNoteToUpdate(note)">{{note.title}}</a>
+    <a #noteTitleLink style="font-size: 25px; margin-left:10px;" (click)="selectNoteToUpdate(note)">{{note.title}}</a>
     <hr style="margin-top: 5px; margin-bottom: 5px;">
-    <span style="font-size: 18px;">{{note.text}}</span>
+    <span #noteText style="font-size: 18px;">{{note.text}}</span>
 </div>
