@@ -1,10 +1,12 @@
 # NashtechNotes
 
-This project is a single page application, generated using Angular CLI. 
+## Overview
+
+This project is a single page web application designed to manage notes.
 There are multiple components on the page, which will make it look like different pages. 
 Through this we can add notes and save them to the local storage of the browser. 
 Also we can edit the existing notes, by clicking on them and can save the updated note to the local storage. 
-By checking the checkbox aligned with the notes on the home page, we can select them to be deleted, this will enable the delete button, otherwise the delete button will be disabled. 
+By checking the checkbox adjacent to the notes on the home page, we can select them to be deleted, this will enable the delete button, otherwise the delete button will be disabled. 
 And on clicking the delete button, all the checked notes are deleted.
 
 ## Components
@@ -51,5 +53,49 @@ This component is displayed for each note stored in the local storage.
   - #checkTheNote: listens to change event and then calls the selectNoteToDelete method.
   - #noteTitleLink: listens to click event and then calls the selectNoteToUpdate method and displays the title of the note recieved from the AppComponent.
   - #noteText: displays the text of the note recieved from the AppComponent.
+
+## Prerequisites
+
+Ensure you have the following installed on your system:
+
+- Node.js (v14 or higher recommended)
+
+- npm (comes with Node.js)
+
+- Angular CLI (install with npm install -g @angular/cli if not already installed)
+
+## Installation
+
+Follow these steps to clone the repository, install dependencies, and run the application:
+
+### Clone the Repository
+```bash
+git clone [repository-url]
+cd Nashtech-Notes
+```
+
+### Install Dependencies
+Run the following command to install all required dependencies:
+```bash
+npm install
+```
+
+### Run the Application
+Start the development server and open the application in your default browser:
+```bash
+ng serve --open
+```
+
+If the --open flag doesn’t work, manually open your browser and navigate to `http://localhost:4200/`.
+
+## Usage
+
+- Click the add button, to add new note and modify the default title and text.
+- Click the save button, to save the new note.
+- Click the back button, to go to the note home page or root component.
+- Click the title of the existing note on the note home page, it will redirect you to the UpsertComponent, where you can modify the existing note and then save the changes and go back to the note home page.
+- Click the checkbox adjacent to the note and then the delete button will enable. 
+- Click the checkbox for all the notes that you want to delete.
+- Click the delete button and all the checked notes will be deleted.
 
 
